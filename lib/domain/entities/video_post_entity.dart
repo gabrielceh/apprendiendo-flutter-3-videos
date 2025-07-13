@@ -1,11 +1,11 @@
-class VideoPost {
+class VideoPostEntity {
 
   final String caption;
   final String videoUrl;
   final int likes;
   final int views;
 
-  VideoPost({
+  VideoPostEntity({
     required this.caption,
     required this.videoUrl,
     this.likes = 0,
