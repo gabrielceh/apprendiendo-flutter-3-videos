@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tok_tik/config/theme/app_theme.dart';
+import 'package:tok_tik/infrastructure/datasources/local_video_datasource_impl.dart';
+import 'package:tok_tik/infrastructure/repositories/video_post_repository_impl.dart';
 import 'package:tok_tik/presentation/providers/discover_provider.dart';
 import 'package:tok_tik/presentation/screens/discover/discover_screen.dart';
 
@@ -13,12 +15,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final videoPostRespository = VideoPostsRepositoryImpl(videoPostDatasource: LocalVideoDatasource());
+
+
     return MultiProvider(
       providers: [
                 //.. es conocido como un operador de cascada, sirve para llanmar a varios metoos de un objeto
         ChangeNotifierProvider(
           lazy: false,
-          create: (_)=>DiscoverProvider()..loadNextPage()
+          create: (_)=>DiscoverProvider(videoPostRepository: videoPostRespository)..loadNextPage()
         )
       ],
       child: MaterialApp(
