@@ -25,12 +25,7 @@ class MyApp extends StatelessWidget {
         title: 'Material App',
         debugShowCheckedModeBanner: false,
         theme: AppTheme().themeData,
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Material App Bar'),
-          ),
-          body: DiscoverScreen(),
-        ),
+        home: DiscoverScreen(),
       ),
     );
   }
